@@ -1,0 +1,54 @@
+body {
+  font-family: Monaco;
+  font-size: 12px;
+}
+
+.list-wrap {
+  margin: 0;
+  padding: 0;
+
+  > li {
+    display: block;
+    list-style-type: none;
+  }
+
+  &.flex {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}
+
+$border-color: #ccc;
+
+fieldset {
+  border: solid 1px $border-color;
+  margin: 10px;
+  border-radius: 5px;
+  label {
+    margin: 5px;
+  }
+}
+
+.experiment-and-stats {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .experiment {
+    flex-basis: 70%;
+  }
+
+  .stats {
+    position: relative;
+    flex-basis: 30%;
+
+    .loading {
+      font-size: 20px;
+      right: 25px;
+      top: 25px;
+      display: inline-block;
+      height: 16px;
+      position: absolute;
+      width: 16px;
+    }
+  }
+}
