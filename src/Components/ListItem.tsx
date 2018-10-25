@@ -5,12 +5,13 @@ import './ListItem.scss'
 
 interface Props {
   item: Item
+  onRender: () => void
 }
 
 export default class ListItemClass extends React.PureComponent<Props> {
   render() {
     const { id, name, index, origin, destination, date } = this.props.item
-    console.log('render list item in class')
+    this.props.onRender()
     return (
       <div id={id} className="list-item">
         <img
