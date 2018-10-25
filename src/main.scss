@@ -44,6 +44,7 @@ fieldset {
     h4 {
       text-align: center;
     }
+
   }
   fieldset > div {
     display: flex;
@@ -53,6 +54,12 @@ fieldset {
 
     input {
       flex: 0 1 50%;
+    }
+
+    &.footer {
+      padding: 20px 0 0;
+      justify-content: center;
+      border-top: dashed 1px #eee;
     }
   }
 }

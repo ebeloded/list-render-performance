@@ -1,5 +1,7 @@
 import * as React from 'react'
+import { RenderType } from './RenderTypes'
 export interface StatsProps {
+  type?: RenderType
   startTime?: number
   finishTime?: number
   FPS?: number
@@ -15,7 +17,20 @@ export interface StatsProps {
   }
 }
 
-class Stats extends React.PureComponent<{ stats: StatsProps }> {
+const asTable = ({ type, FPS, shuffles, mutations, render }: StatsProps) => ({
+  type,
+  FPS,
+  shuffles,
+  'mutations.attributes': mutations.attributes || 0,
+  'mutations.childList': mutations.childList || 0,
+  'mutations.characterData': mutations.characterData || 0,
+  'render.list': render.list || 0,
+  'render.child': render.child || 0,
+})
+
+class Stats extends React.PureComponent<{
+  stats: StatsProps
+}> {
   render() {
     const stats = this.props.stats
     return (
@@ -93,6 +108,11 @@ class Stats extends React.PureComponent<{ stats: StatsProps }> {
             id="Child"
             value={stats.render.child || 0}
           />
+        </div>
+        <div className="footer">
+          <button onClick={() => console.table(asTable(stats))}>
+            Save Stats
+          </button>
         </div>
       </fieldset>
     )

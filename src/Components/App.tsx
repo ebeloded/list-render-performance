@@ -158,6 +158,7 @@ export default class App extends React.PureComponent<Props, State> {
           ...getCleanStats(),
           startTime,
           finishTime: startTime + EXPERIMENT_DURATION,
+          type: this.state.renderType,
         },
       },
       () => {
